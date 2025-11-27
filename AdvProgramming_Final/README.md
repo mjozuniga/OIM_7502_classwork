@@ -1,5 +1,193 @@
-<<<<<<< HEAD
-Polars: Exploring a modern DataFrame Library for PythonAuthor: Maria Jose ZunigaCourse: Advanced ProgrammingLibrary: PolarsTopic: Why Would a Data Scientist Use This?OverviewThis project explores Polars, a modern and high-performance DataFrame library written in Rust.The goal of this notebook is to demonstrate how Polars handles data analysis tasks efficiently, what makes it unique compared to traditional Python tools, and why a data scientist might adopt it for large-scale or performance-sensitive work.Rather than competing with Pandas, this project shows how Polars redefines the same tasks, data loading, filtering, grouping, and aggregation, using a faster, more expressive, and parallelized approachLibraries UsedPolars � Fast, multi-threaded DataFrame library written in RustPandas � Classic Python library for data manipulationMatplotlib � Used for quick visualizations of data distributionsTime � Built-in Python module for performance measurementRequirementsPython 3.8+To install dependencies:pip install polars pandas matplotlib What This Notebook Demonstrates1. Dataset Loading � Compare how fast Pandas and Polars can load the same dataset2. Filtering & Grouping � Extract the most recent year and compute the average overweight rate of female toddlers per U.S. state3. Performance Comparison � Measure and compare read and computation times4. Lazy API Demo � Show how Polars� lazy execution improves efficiency by optimizing queries before running themDataset OverviewSource: Data.gov � Nutrition, Physical Activity, and Obesity: Women, Infant, and Child (WIC)Size: ~12,800 rows ? 31 columnsFocus: Percentage of WIC toddlers classified as overweight (2008�2020).Key Columns:* YearEnd ? Year of observation* StratificationCategory1 / Stratification1 ? Category & value (e.g., Sex = Female)* Data_Value ? % of overweight toddlers* LocationAbbr ? U.S. state abbreviationPolars vs Pandas � Key TakeawaysAspectPandasPolarsExecution modelSingle-threadedMulti-threadedMemory backendNumpyApache ArrowPerformanceSlower on large data? Faster, optimizedSyntaxImperativeExpression-based (pl.col())Advanced featuresLimitedLazy API, parallelizationInsights* Polars was consistently 2�4? faster than Pandas in reading and aggregation.* Both produced identical numerical results, confirming accuracy.* The Lazy API allows optimization before execution � ideal for large ETL pipelines.* Syntax in Polars feels more declarative and chainable, reducing intermediate variables.ReflectionThis project reinforced how library design choices affect performance and usability.Pandas remains ideal for quick exploration or small datasets, but Polars stands out for production-scale work or machine learning preprocessing.Project ContentsFileDescriptionMidterm_MJZ_Polars.ipynbMain Jupyter Notebook with all steps and codeREADME.mdThis project summary and documentationdata_wic.csvDataset used for analysis (if included)Resources* Polars Documentation ? https://pola-rs.github.io/polars-book/* Apache Arrow Project ? https://arrow.apache.org/* PEP-8 Style Guide ? https://peps.python.org/pep-0008/
-=======
-# OIM_7502_classwork
->>>>>>> 63df3ac3cec9c93598457216a17ba74e79b8ab25
+# 🏈 NFL Game Prediction & Interactive Dashboard
+
+**OIM 7502 - Advanced Programming | Fall 2024**
+
+An interactive machine learning application that predicts NFL game outcomes using historical data (2022-2023 seasons) and provides comprehensive analytics through a professional Streamlit dashboard.
+
+---
+
+## 👥 Team Members
+
+- **Alan Garcia**
+- **Jose Gonzalez**
+- **Vanshika Gupta**
+- **Maria Jose Zuniga**
+
+---
+
+## 📊 Project Overview
+
+This project implements multiple machine learning models to predict NFL game outcomes and analyze team performance. The system includes:
+
+- **4 ML Models**: Logistic Regression, Random Forest, KNN, and Stacked Ensemble
+- **Interactive Dashboard**: 4-page Streamlit application with real-time predictions
+- **Comprehensive Analysis**: Salary correlation, team rankings, and model comparisons
+- **2,176 Games Analyzed**: Training on 2022-2023 seasons, testing on 2024 season
+
+---
+
+## 🎯 Key Results
+
+### Model Performance
+
+| Model | Test Accuracy | Ranking Correlation (ρ) |
+|-------|--------------|------------------------|
+| **Logistic Regression** | **72.9%** | 0.815 |
+| **Random Forest** | **71.5%** | **0.830** ⭐ |
+| KNN | 61.2% | 0.635 |
+| Stacked Ensemble | 62.5% | 0.666 |
+
+### Key Findings
+
+- **Best Model**: Logistic Regression achieved 72.9% accuracy on 2024 season predictions
+- **Best Ranking Predictor**: Random Forest (Spearman ρ = 0.830)
+- **Salary Correlation**: Moderate correlation between team salary and performance (r = 0.475)
+- **Top Features**: `win_pct` (11.5%), `opp_win_pct` (11.6%), `rushing_epa` (4.6%)
+
+---
+
+## 🚀 Quick Start
+
+### Prerequisites
+
+```bash
+Python 3.12+
+pip (Python package manager)
+```
+
+### Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/mjozuniga/OIM_7502_classwork.git
+cd OIM_7502_classwork/AdvProgramming_Final
+
+# Install dependencies
+pip install pandas numpy scikit-learn scipy matplotlib seaborn openpyxl streamlit plotly
+```
+
+### Running the Dashboard
+
+```bash
+# Navigate to streamlit app
+cd streamlit_app
+
+# Launch the dashboard
+streamlit run app.py
+```
+
+The dashboard will open automatically at: **http://localhost:8501**
+
+---
+
+## 📁 Project Structure
+
+```
+AdvProgramming_Final/
+├── data/                              # All data files
+│   ├── global_team_games_2.xlsx       # Historical game data (2022-2024)
+│   ├── nfl_dictionaries_2.xlsx        # Data dictionary
+│   ├── nfl_salary_by_team_2024_complete.csv
+│   ├── nfl_standings_2024.csv
+│   ├── rankings_lr.csv                # Generated by notebook
+│   ├── rankings_rf.csv
+│   ├── rankings_knn.csv
+│   ├── rankings_stack.csv
+│   └── all_rankings_enriched.csv      # Combined rankings
+├── notebook/
+│   └── NFL_LR_RF_KNN_Stack_Salary.ipynb  # Main analysis notebook
+├── streamlit_app/
+│   ├── app.py                         # Dashboard homepage
+│   └── pages/
+│       ├── 1_🏈_Game_Predictor.py     # Interactive predictions
+│       ├── 2_📊_Model_Comparison.py   # Performance comparison
+│       ├── 3_💰_Salary_Analysis.py    # Salary vs performance
+│       └── 4_🏆_Team_Rankings.py      # Rankings visualization
+└── README.md
+```
+
+---
+
+## 🎨 Dashboard Features
+
+### 1. 🏈 Game Predictor
+- Head-to-head team selection from all 32 NFL teams
+- Real-time predictions from 3 models
+- Advanced options to adjust team statistics
+- Visual probability comparison
+
+### 2. 📊 Model Comparison
+- Confusion matrices for all models
+- Accuracy, precision, and recall metrics
+- Feature importance rankings
+
+### 3. 💰 Salary Analysis
+- Interactive scatter plots: Salary vs Win %
+- Correlation analysis (Pearson r = 0.475)
+- Team-by-team breakdown
+
+### 4. 🏆 Team Rankings
+- Predicted vs Actual rankings
+- Interactive sortable table
+- Model comparison across rankings
+
+---
+
+## 🔬 Methodology
+
+### Feature Engineering (20 Features)
+- **Win Percentage**: `win_pct`, `opp_win_pct`
+- **Relative EPA**: `rel_rushing_epa`, `rel_passing_epa`, `rel_receiving_epa`
+- **Defensive**: `rel_def_sacks`, `rel_def_interceptions`
+- **Context**: `is_home`, `is_playoff`
+
+### Models
+
+#### 1. Logistic Regression
+- **Accuracy**: 72.9% (test)
+- **Advantage**: Best overall accuracy
+
+#### 2. Random Forest
+- **Accuracy**: 71.5% (test)
+- **Parameters**: `n_estimators=100`, `max_depth=5`
+- **Advantage**: Best ranking correlation (ρ = 0.830)
+
+#### 3. K-Nearest Neighbors
+- **Accuracy**: 61.2% (test)
+- **Parameters**: `n_neighbors=11`, `weights='distance'`
+
+#### 4. Stacked Ensemble
+- **Accuracy**: 62.5% (test)
+- **Meta-Model**: Combines all three models
+
+---
+
+## 💻 Technologies Used
+
+- **Python 3.12**: Primary language
+- **pandas & NumPy**: Data manipulation
+- **scikit-learn**: Machine learning
+- **Streamlit & Plotly**: Interactive dashboard
+- **SciPy**: Statistical analysis
+
+---
+
+## 🔍 Key Insights
+
+1. **Logistic Regression** performed best (72.9%) despite being the simplest model
+2. **Win percentage** is the strongest predictor of game outcomes
+3. **Salary** shows moderate correlation (r = 0.475) with performance
+4. **Random Forest** best predicts team rankings (ρ = 0.830)
+
+---
+
+## 📧 Contact
+
+**Course**: OIM 7502 - Advanced Programming  
+**Semester**: Fall 2024  
+**Institution**: Babson College
+
+---
+
+**Last Updated**: November 27, 2024  
+**Status**: ✅ Complete and Ready for Submission
