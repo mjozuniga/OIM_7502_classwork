@@ -1,0 +1,7 @@
+# Ignore everything in root
+/*
+
+# Except these
+!/AdvProgramming_Final/
+!.gitignore
+!README.md
