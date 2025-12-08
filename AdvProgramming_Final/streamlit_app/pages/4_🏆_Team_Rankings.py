@@ -1,4 +1,5 @@
- 4: Team Rankings
+"""
+Page 4: Team Rankings
 Compare predicted vs actual team rankings across all models
 """
 import streamlit as st
